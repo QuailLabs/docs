@@ -10,7 +10,7 @@ Quailrunner performs no database writes to your database. Therefore, read-only a
 
 ### Connect to your PostgreSQL database as a superuser (usually `postgres`)
 
-```
+```bash
 psql -U postgres
 ```
 
@@ -18,25 +18,25 @@ psql -U postgres
 
 The user name and password can be anything you want, but it's recommended to use a strong password.
 
-```
+```sql
 CREATE USER quail_runner WITH PASSWORD 'secure_password';
 ```
 
 ### Connect to your specific database
 
-```
+```bash
 \c your_database_name
 ```
 
 ### Grant `USAGE` on the schema (usually `public`)
 
-```
+```sql
 GRANT USAGE ON SCHEMA public TO quail_runner;
 ```
 
 ### Grant `SELECT` privileges on specific tables that Quailrunner needs to access
 
-```
+```sql
 GRANT SELECT ON table_name1 TO quail_runner;
 GRANT SELECT ON table_name2 TO quail_runner;
 ```
@@ -45,13 +45,13 @@ Repeat this command for each table Quailrunner needs to access for tasks and joi
 
 ### If you want to grant read access to all existing tables in the current database:
 
-```
+```sql
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO quail_runner;
 ```
 
 ### To ensure Quailrunner has `SELECT` privileges on tables created in the future:
 
-```
+```sql
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO quail_runner;
 ```
 
@@ -90,7 +90,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO quail_runner
 - Always use strong, unique passwords for the Quailrunner database user
 - Regularly review and audit the permissions granted to Quailrunner
 - Consider using connection limits for the Quailrunner user:
-  ```
+  ```sql
   ALTER ROLE quail_runner CONNECTION LIMIT 5;
   ```
 
@@ -99,7 +99,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO quail_runner
 1. Object Ownership: Ensure tables are owned by a different role to maintain security.
 2. Row-Level Security: If you need more granular control over what data Quailrunner can access within tables, consider using PostgreSQL's row-level security features.
 3. Revoking Permissions: If you need to revoke permissions from Quailrunner:
-   ```
+   ```sql
    REVOKE SELECT ON table_name FROM quail_runner;
    ```
 4. Monitoring: Regularly monitor Quailrunner's database activity to ensure it's operating as expected.

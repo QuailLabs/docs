@@ -34,7 +34,7 @@ We also allow you to send custom headers and a custom body as you wish, which me
 
 When constructing your request body, you can use static values and/or any of the columns that you `SELECT` in your SQL predicate. To use columns from your database, use the following syntax:
 
-```json
+```js
 {
   "field1": "{{.column1Name}}",
   "field2": "{{.column2Name}}"
