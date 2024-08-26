@@ -36,21 +36,24 @@ For sending a plain text or html email:
 {
   "personalizations": [
     {
-      "to": [{"email": "{{.email}}"}],
+      "to": [
+        {"email": "{{.email}}"}
+      ],
+      "from": {"email": "<your-email-address>"},
+      "subject": "Hello from Quailrunner",
+      "content": [
+        {
+          "type": "text/plain",
+          "value": "This is a transactional email we’re sending from Quailrunner and Sendgrid!"
+        },
+        {
+          "type": "text/html",
+          "value": "<html><body>This is a transactional email we’re sending from Quailrunner and Sendgrid!</body></html>"
+        }
+      ]
     }
   ],
-  "from": {"email": "<your-email-address>"},
-  "subject": "Hello from Quailrunner",
-  "content": [
-    {
-      "type": "text/plain",
-      "value": "This is a transactional email we’re sending from Quailrunner and Sendgrid!"
-    },
-    {
-      "type": "text/html",
-      "value": "<html><body>This is a transactional email we’re sending from Quailrunner and Sendgrid!</body></html>"
-    }
-  ]
+
 }
 ```
 
@@ -60,15 +63,17 @@ For sending an email using a Sendgrid template:
 {
   "personalizations": [
     {
-      "to": [{"email": "{{.email}}"}],
+      "to": [
+        {"email": "{{.email}}"}
+      ],
+      "from": {"email": "<your-email-address>"},
+      "template_id": "<your-sendgrid-email-template-id>",
       "dynamic_template_data": {
         "field_1": "{{.colName1}}",
         "field_2": "{{.colName2}}"
       }
     }
   ],
-  "from": {"email": "<your-email-address>"},
-  "template_id": "<your-sendgrid-email-template-id>",
 }
 ```
 
