@@ -36,10 +36,10 @@ For sending a plain text or html email:
 {
   "personalizations": [
     {
-      "to": "{{.email}}",
+      "to": [{"email": "{{.email}}"}],
     }
   ],
-  "from": "<your-email-address>",
+  "from": {"email": "<your-email-address>"},
   "subject": "Hello from Quailrunner",
   "content": [
     {
@@ -60,14 +60,14 @@ For sending an email using a Sendgrid template:
 {
   "personalizations": [
     {
-      "to": "{{.email}}",
+      "to": [{"email": "{{.email}}"}],
       "dynamic_template_data": {
         "field_1": "{{.colName1}}",
         "field_2": "{{.colName2}}"
       }
     }
   ],
-  "from": "<your-email-address>",
+  "from": {"email": "<your-email-address>"},
   "template_id": "<your-sendgrid-email-template-id>",
 }
 ```
