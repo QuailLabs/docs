@@ -52,8 +52,7 @@ For sending a plain text or html email:
         }
       ]
     }
-  ],
-
+  ]
 }
 ```
 
@@ -73,7 +72,7 @@ For sending an email using a Sendgrid template:
         "field_2": "{{.colName2}}"
       }
     }
-  ],
+  ]
 }
 ```
 
