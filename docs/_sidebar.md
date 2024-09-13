@@ -6,8 +6,8 @@
 
 <h3 style="padding-left: 16px; padding-right: 16px; margin-bottom: 0px;">Getting started</h3>
 
+- [Overview](/)
 - [Setting up a read-only database user](guides/read-only-database-user.md)
-- [How triggers work](guides/how-triggers-work.md)
 
 <h3 style="padding-left: 16px; padding-right: 16px; margin-bottom: 0px;">Integration guides</h3>
 
