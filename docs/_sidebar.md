@@ -8,6 +8,7 @@
 
 - [Overview](/)
 - [Setting up a read-only database user](guides/read-only-database-user.md)
+- [Frequently asked questions](guides/faq.md)
 
 <h3 style="padding-left: 16px; padding-right: 16px; margin-bottom: 0px;">Integration guides</h3>
 
