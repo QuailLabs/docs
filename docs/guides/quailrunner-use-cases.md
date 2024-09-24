@@ -7,19 +7,20 @@ Quailrunner is designed to solve many common data processing needs across variou
 Quailrunner operates on the current state of your data, rather than tracking changes over time. Here's how it works:
 
 1. You define SQL criteria for selecting rows from your database.
-2. Quailrunner periodically runs this query.
-3. For each row that meets the criteria, Quailrunner executes the specified actions.
-4. Rows that don't meet the criteria when the query runs are not processed, even if they met the criteria at some point in the past.
+2. Quailrunner periodically runs this query (every 10 seconds).
+3. For each row that meets the criteria and hasn't been successfully processed before, Quailrunner executes the specified actions.
+4. Rows that don't meet the criteria when the query runs are not processed.
 
 ## When to choose Quailrunner
 
 Quailrunner is an excellent choice when you need:
 
 1. Execution of complex SQL queries or business logic
-2. Resource-efficient processing with some tolerance for delay
+2. Resource-efficient processing with some tolerance for delay (up to 10 seconds)
 3. Actions based on the current state of your data
 4. Triggers from aggregated data across multiple rows or tables
 5. A simple setup without additional infrastructure requirements
+6. Automatic retries for failed actions (up to 5 times by default)
 
 ## Handling change-based triggers
 
@@ -31,10 +32,11 @@ If your application logic depends on triggering actions based on data changes, Q
 
 While Quailrunner is versatile, there are scenarios where other solutions might be more appropriate:
 
-1. Your architecture demands real-time, event-driven responses
+1. Your architecture demands real-time, event-driven responses (faster than every 10 seconds)
 2. You need near-instant synchronization across multiple systems for _all_ data changes
 3. Your use case involves capturing and processing changes within database transactions
 4. Your strategy involves efficient incremental backups based on data changes
+5. You need to process every single change that occurs, rather than the current state of data
 
 If your use case involves these requirements, we encourage you to look at change data capture (CDC) systems. They may be more suitable for your project.
 
@@ -43,7 +45,8 @@ If your use case involves these requirements, we encourage you to look at change
 When evaluating Quailrunner, consider your specific needs:
 
 - Do you need to process data based on specific parameters and the current state of your database, or do you need to track and respond to every change that occurs?
-- Is periodic processing (roughly every 10 seconds) sufficient, or do you require real-time updates?
-- Are you looking for a solution that's easy to set up and maintain?
+- Is periodic processing (every 10 seconds) sufficient, or do you require real-time updates?
+- Are you looking for a solution that's easy to set up and maintain, with built-in retry mechanisms?
+- Can you work with a system that processes each unique row only once per trigger, or do you need to respond to every state change?
 
 By understanding these factors, you can determine whether Quailrunner aligns with your project requirements or if an alternative solution would be more suitable.
