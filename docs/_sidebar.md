@@ -13,5 +13,6 @@
 <h3 style="padding-left: 16px; padding-right: 16px; margin-bottom: 0px;">Integration guides</h3>
 
 - [Postmark](integrations/postmark.md)
+- [Twilio](integrations/twilio.md)
 - [Sendgrid](integrations/sendgrid.md)
 - [Mailchimp](integrations/mailchimp.md)
